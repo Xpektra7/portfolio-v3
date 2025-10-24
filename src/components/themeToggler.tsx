@@ -22,7 +22,7 @@ export default function ThemeToggler() {
   }
 
   return (
-    <Button variant="ghost" size="icon-sm" onClick={() => toggleTheme(isLight)}>
+    <Button variant="ghost" size="icon-sm" onClick={() => toggleTheme(isLight)} className="text-chart-4 hover:text-chart-4">
       <SunMoon />
     </Button>
   );
