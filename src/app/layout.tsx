@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
-import {  JetBrains_Mono } from "next/font/google";
+import {  JetBrains_Mono, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import ThemeToggler from "@/components/themeToggler";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import {  LinkedinIcon, TwitterIcon, Github, MailIcon } from "lucide-react";
 
-const geistMono = JetBrains_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-mono",
+  subsets: ["latin"],
+});
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-sans",
   subsets: ["latin"],
 });
 
@@ -25,10 +32,33 @@ export default function RootLayout({
   return (
       <html lang="en">
       <body
-        className={`${geistMono.variable} text-muted-foreground px-4 antialiased overflow-x-hidden max-w-[720px] mx-auto mt-8 md:mt-16`}
+        className={`${jetbrainsMono.variable} text-muted-foreground px-8 antialiased overflow-x-hidden max-w-[720px] mx-auto my-8 md:mt-16`}
       >
       <header className="w-full flex justify-between items-center mb-8">
         <h3 className="text-foreground">X7</h3>
+        <div className="flex items-center text-foreground gap-2">
+            <Button variant="secondary" size="icon-sm" asChild aria-label="Link to my Github account">
+              <Link href="https://github.com/Xpektra7" target="_blank" rel="noopener noreferrer">
+                <Github />
+              </Link>
+            </Button>
+            <Button variant="secondary" size="icon-sm" asChild aria-label="Link to my Twitter account">
+              <Link href="https://www.x.com/xpektra7" target="_blank" rel="noopener noreferrer">
+                <TwitterIcon />
+              </Link>
+            </Button>
+            <Button variant="secondary" size="icon-sm" asChild aria-label="Link to my Linkedin account">
+              <Link href="https://www.linkedin.com/in/xpektra" target="_blank" rel="noopener noreferrer">
+                <LinkedinIcon/>
+              </Link>
+            </Button>
+            <Button variant="secondary" size="icon-sm" asChild aria-label="Send me an Email">
+              <Link href="https://www.linkedin.com/in/xpektra" target="_blank" rel="noopener noreferrer">
+                <MailIcon />
+              </Link>
+            </Button>
+          </div>
+
         <ThemeToggler/>
       </header>
 
