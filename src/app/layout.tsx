@@ -43,17 +43,17 @@ export default function RootLayout({
               </Link>
             </Button>
             <Button variant="secondary" size="icon-sm" asChild aria-label="Link to my Twitter account">
-              <Link href="https://www.x.com/xpektra7" target="_blank" rel="noopener noreferrer">
+              <Link href="https://www.x.com/Xpektra7" target="_blank" rel="noopener noreferrer">
                 <TwitterIcon />
               </Link>
             </Button>
             <Button variant="secondary" size="icon-sm" asChild aria-label="Link to my Linkedin account">
-              <Link href="https://www.linkedin.com/in/xpektra" target="_blank" rel="noopener noreferrer">
+              <Link href="https://www.linkedin.com/in/ogungbayi-imran-9a4ba9291" target="_blank" rel="noopener noreferrer">
                 <LinkedinIcon/>
               </Link>
             </Button>
             <Button variant="secondary" size="icon-sm" asChild aria-label="Send me an Email">
-              <Link href="https://www.linkedin.com/in/xpektra" target="_blank" rel="noopener noreferrer">
+              <Link href="mailto:xpektra7@gmail.com" target="_blank" rel="noopener noreferrer">
                 <MailIcon />
               </Link>
             </Button>
@@ -65,7 +65,7 @@ export default function RootLayout({
         {children}
 
         <footer className="flex text-sm justify-between items-center mt-16">
-          Xpektra  
+          X7
           <p>All rights reserved</p>
         </footer>
       </body>
