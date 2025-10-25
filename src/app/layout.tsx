@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import {  JetBrains_Mono, Geist_Mono, Inter } from "next/font/google";
+import {  JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import ThemeToggler from "@/components/themeToggler";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import {  LinkedinIcon, TwitterIcon, Github, MailIcon } from "lucide-react";
 
-const inter = Inter({
+const inter = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
 });
