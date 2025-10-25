@@ -11,7 +11,7 @@ export default function Home() {
       <main className="flex flex-col gap-24">
         <section id="hero" className="flex flex-col gap-4">
           <div className="flex justify-between items-center">
-            <h1 className="text-foreground text-2xl font-semibold">Hey, I’m <span className="text-chart-4">Xpektra</span>.</h1>
+            <h1 className="text-foreground text-2xl font-semibold font-sans">Hey, I’m <span className="text-chart-4">Xpektra</span>.</h1>
           </div>
 
           <p className="text-sm">I’m a frontend and embedded systems engineer who thrives at the intersection of hardware and software. I design and build systems that connect the physical and digital, from intelligent traffic prototypes to seamless web interfaces.

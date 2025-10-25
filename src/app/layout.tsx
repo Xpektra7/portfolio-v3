@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
-import {  JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ThemeToggler from "@/components/themeToggler";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import {  LinkedinIcon, TwitterIcon, Github, MailIcon } from "lucide-react";
 
-const inter = JetBrains_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"]
 });
+
 const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-sans",
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
 
@@ -32,7 +33,7 @@ export default function RootLayout({
   return (
       <html lang="en">
       <body
-        className={`${jetbrainsMono.variable} font-mono text-muted-foreground px-8 antialiased overflow-x-hidden max-w-[720px] mx-auto my-8 md:mt-16`}
+        className={`${jetbrainsMono.variable} ${geistMono.variable} text-muted-foreground px-8 antialiased overflow-x-hidden max-w-[720px] mx-auto my-8 md:mt-16`}
       >
       <header className="w-full flex justify-between items-center mb-8">
         <h3 className="text-foreground">X7</h3>
