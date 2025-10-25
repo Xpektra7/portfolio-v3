@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
       <html lang="en">
       <body
-        className={`${jetbrainsMono.variable} text-muted-foreground px-8 antialiased overflow-x-hidden max-w-[720px] mx-auto my-8 md:mt-16`}
+        className={`${jetbrainsMono.variable} font-mono text-muted-foreground px-8 antialiased overflow-x-hidden max-w-[720px] mx-auto my-8 md:mt-16`}
       >
       <header className="w-full flex justify-between items-center mb-8">
         <h3 className="text-foreground">X7</h3>
