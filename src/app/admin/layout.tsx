@@ -1,44 +1,25 @@
-import Link from "next/link";
-export default function AdminLayout({children} : Readonly<{children : React.ReactNode}>){
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs"
 
-    return(
-      <div
-        className={`antialiased overflow-x-hidden w-full p-2` }
-      >
-        <header className="p-4 w-full flex flex-col gap-4">
-          <h3>Logo</h3>
-          <ul className="flex gap-2 items-center">
-            <li>
-              <Link href="/admin">Home</Link>
-            </li>
-            <li>
-              <Link href="/admin/dashboard">Dashboard</Link>
-            </li>
-            <li>
-              <Link href="/admin/users">Users</Link>
-            </li>
-          </ul>
-        </header>
-
-        <div className="w-full grid grid-cols-5">
-          <aside className="col-span-1 bg-gray-800">
-            <p>Technology</p>
-            <p>Design</p>
-            <p>Business</p>
-          </aside>
-          <main className="col-span-4">
-            {children}
-          </main>
-        </div>
-
-            
-        <footer className="flex flex-col justify-center items-center p-2">
-          &copy; 2025   Allrights reserved
-        </footer>
-      </div>
-
-    );
-
-
-
-};
+export default function Layout({children , projects, blogs}: {children: React.ReactNode, projects?: boolean, blogs?: boolean}) {
+  return (
+    <div className="flex w-full flex-col gap-">
+      <Tabs defaultValue="projects" className="space-y-4">
+        <TabsList>
+          <TabsTrigger value="projects">Projects</TabsTrigger>
+          <TabsTrigger value="blogs">Blogs</TabsTrigger>
+        </TabsList>
+        <TabsContent value="projects">
+          {projects}
+        </TabsContent>
+        <TabsContent value="blogs">
+          {blogs}
+        </TabsContent>
+      </Tabs>
+    </div>
+  )
+}
