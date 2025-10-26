@@ -1,25 +1,24 @@
+"use client";
 import {
   Tabs,
-  TabsContent,
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
+import { useRouter } from "next/navigation";
 
-export default function Layout({children , projects, blogs}: {children: React.ReactNode, projects?: boolean, blogs?: boolean}) {
+export default function Layout({children, addProject }: {children: React.ReactNode, addProject?: React.ReactNode}) {
+  const router = useRouter(); 
   return (
-    <div className="flex w-full flex-col gap-">
-      <Tabs defaultValue="projects" className="space-y-4">
-        <TabsList>
-          <TabsTrigger value="projects">Projects</TabsTrigger>
-          <TabsTrigger value="blogs">Blogs</TabsTrigger>
-        </TabsList>
-        <TabsContent value="projects">
-          {projects}
-        </TabsContent>
-        <TabsContent value="blogs">
-          {blogs}
-        </TabsContent>
-      </Tabs>
-    </div>
+    <div className="flex w-full flex-col gap-4">
+          <Tabs defaultValue="" className="space-y-4">
+              <TabsList>
+                <TabsTrigger value="projects" onClick={() => {router.push("/admin/projects")}}>Projects</TabsTrigger>
+                <TabsTrigger value="blogs" onClick={() => {router.push("/admin/blogs")}}>Blogs</TabsTrigger>
+              </TabsList>
+            </Tabs>
+      
+      {children}
+      {addProject}
+    </div>  
   )
 }

@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { db } from "@/lib/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import Loading from "./loading";
+import Error from "./errorComponent";
 
 interface Project {
   id?: string;
@@ -21,21 +22,28 @@ interface Project {
 export default function Projects({ limit }: { limit?: number }) {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      setLoading(true);
-      const snapshot = await getDocs(collection(db, "projects"));
-      const data: Project[] = snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...(doc.data() as Project),
-      }));
-      setProjects(limit ? data.slice(0, limit) : data);
-      setLoading(false);
-    };
+useEffect(() => {
+    async function fetchProjects() {
+      try {
+        const snapshot = await getDocs(collection(db, "projects"));
+        const data: Project[] = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...(doc.data() as Omit<Project, "id">),
+        }));
+        setProjects(data);
+      } catch {
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    }
 
-    fetchProjects().catch(console.error);
-  }, [limit]);
+    fetchProjects();
+  }, []);
+
+  if (error) return <Error />;
 
   return (
     <section className="flex flex-col gap-4">

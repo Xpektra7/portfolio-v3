@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { db } from "@/lib/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import Loading from "./loading";
+import ErrorComponent from "../../../components/error";
 
 interface Project {
   id?: string;
@@ -21,21 +22,29 @@ interface Project {
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error,setError] = useState(false);
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      setLoading(true);
-      const snapshot = await getDocs(collection(db, "projects"));
-      const data: Project[] = snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...(doc.data() as Project),
-      }));
-      setProjects(data);
-      setLoading(false);
-    };
+useEffect(() => {
+    async function fetchProjects() {
+      try {
+        const snapshot = await getDocs(collection(db, "projects"));
+        const data: Project[] = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...(doc.data() as Omit<Project, "id">),
+        }));
+        setProjects(data);
+      } catch {
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    }
 
-    fetchProjects().catch(console.error);
+    fetchProjects();
   }, []);
+
+  if(error) return <ErrorComponent/>
+
 
   return (
     <section className="flex flex-col gap-4">
@@ -105,10 +114,13 @@ export default function Projects() {
         ))}
       </div>
         ) : <Loading />}
-        <Button variant="outline">
+
+      <Button variant="outline">
+        <Link href="/admin/addProject" className="flex items-center gap-2">
           <PlusIcon />
           Add Project
-        </Button>
+        </Link>
+      </Button>
     </section>
   );
 }
