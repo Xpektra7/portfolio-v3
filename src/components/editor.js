@@ -1,35 +1,24 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState } from "react";
-import Code from "@editorjs/code";
-import Embed from "@editorjs/embed";
-import LinkTool from "@editorjs/link";
-import List from "@editorjs/list";
-import Header from "@editorjs/header";
-import Quote from "@editorjs/quote";
-import Marker from "@editorjs/marker";
-import SimpleImage from "@editorjs/simple-image";
-import InlineCode from "@editorjs/inline-code";
 
 export default function Editor({ data, editorBlock }) {
   const editorRef = useRef(null);
   const [savedData, setSavedData] = useState([]);
 
   const EDITOR_JS_TOOLS = {
-    header: Header,
-    embed: Embed,
-    marker: Marker,
-    list: List,
+    header: require("@editorjs/header"),
+    embed: require("@editorjs/embed"),
+    marker: require("@editorjs/marker"),
+    list: require("@editorjs/list"),
     linkTool: {
-      class: LinkTool,
-      config: {
-        endpoint: "http://localhost:8008/fetchUrl",
-      },
+      class: require("@editorjs/link"),
+      config: { endpoint: "http://localhost:8008/fetchUrl" },
     },
-    code: Code,
-    quote: Quote,
-    image: SimpleImage,
-    inlineCode: InlineCode,
+    code: require("@editorjs/code"),
+    quote: require("@editorjs/quote"),
+    image: require("@editorjs/simple-image"),
+    inlineCode: require("@editorjs/inline-code"),
   };
 
   useEffect(() => {
@@ -67,11 +56,7 @@ export default function Editor({ data, editorBlock }) {
   return (
     <div className="flex flex-col gap-4">
       <div id={editorBlock} className="h-fit w-full min-h-[40vh] p-4" />
-      <Button
-        variant=""
-        onClick={downloadJSON}
-        className="w-full"
-      >
+      <Button variant="" onClick={downloadJSON} className="w-full">
         Download JSON
       </Button>
     </div>
