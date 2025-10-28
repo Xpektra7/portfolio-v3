@@ -119,9 +119,22 @@
   body {
     @apply bg-background text-foreground;
   }
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-sans;
-  }
-
+  
 }
 
+h1, h2, h3, h4, h5, h6 {
+  @apply font-sans text-foreground;
+}
+
+#editorjs-container, #readerjs-container {
+  font-size: 0.875rem;
+  h1 {
+    @apply text-4xl font-bold;
+  }
+  h2 {
+    @apply text-2xl;
+  }
+  .cdx-block {
+    @apply text-sm;
+  }
+}

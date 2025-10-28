@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState } from "react";
 import { EDITOR_JS_TOOLS } from "@/components/tools";
 import type EditorJS from "@editorjs/editorjs";
+import { getFirestore, collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { app } from "@/lib/firebase"; // assumes you already have firebase.ts config
 
 interface EditorProps {
   data?: any;
@@ -12,7 +14,8 @@ interface EditorProps {
 
 export default function Editor({ data, editorBlock }: EditorProps) {
   const editorRef = useRef<EditorJS | null>(null);
-  const [savedData, setSavedData] = useState<any[]>([]);
+  const [saving, setSaving] = useState(false);
+  const db = getFirestore(app);
 
   useEffect(() => {
     import("@editorjs/editorjs").then(({ default: EditorJS }) => {
@@ -21,10 +24,6 @@ export default function Editor({ data, editorBlock }: EditorProps) {
           holder: editorBlock,
           tools: EDITOR_JS_TOOLS as any,
           data,
-          async onChange(api) {
-            const content = await api.saver.save();
-            setSavedData((prev) => [...prev.slice(-4), content]); // keep only last 5 versions
-          },
         });
 
         editorRef.current = editor;
@@ -36,23 +35,30 @@ export default function Editor({ data, editorBlock }: EditorProps) {
     };
   }, [data, editorBlock]);
 
-  const downloadJSON = () => {
-    const blob = new Blob([JSON.stringify(savedData, null, 2)], {
-      type: "application/json",
+  const handlePublish = async () => {
+    if (!editorRef.current) return;
+
+    setSaving(true);
+    const content = await editorRef.current.save();
+
+    const titleBlock = content.blocks.find((b: any) => b.type === "header");
+    const title = titleBlock ? titleBlock.data.text : "Untitled";
+
+    await addDoc(collection(db, "blogs"), {
+      title,
+      content,
+      createdAt: serverTimestamp(),
     });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "editorData.json";
-    a.click();
-    URL.revokeObjectURL(url);
+
+    setSaving(false);
+    alert("Published to Firestore!");
   };
 
   return (
     <div className="flex flex-col gap-4">
-      <div id={editorBlock} className="h-fit w-full min-h-[40vh] p-4" />
-      <Button onClick={downloadJSON} className="w-full">
-        Download JSON
+      <div id={editorBlock} className="h-fit w-full p-4" />
+      <Button onClick={handlePublish} disabled={saving} className="w-full">
+        {saving ? "Publishing..." : "Publish"}
       </Button>
     </div>
   );
