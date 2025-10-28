@@ -101,7 +101,7 @@ useEffect(() => {
                     variant="link"
                     size="icon-sm"
                     asChild
-                    className="text-foreground-muted hover:text-foreground p-1 m-0 w-fit"
+                    className="text-muted-foreground hover:text-foreground p-1 m-0 w-fit"
                     title="View Live Demo"
                   >
                     <Link href={`https://${project.liveLink}`}>
@@ -114,7 +114,7 @@ useEffect(() => {
                     variant="link"
                     size="icon-sm"
                     asChild
-                    className="text-foreground-muted hover:text-foreground p-1 m-0 w-fit"
+                    className="text-muted-foreground hover:text-foreground p-1 m-0 w-fit"
                     title="View Repo"
                   >
                     <Link href={`https://${project.gitLink}`}>

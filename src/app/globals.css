@@ -126,15 +126,61 @@ h1, h2, h3, h4, h5, h6 {
   @apply font-sans text-foreground;
 }
 
-#editorjs-container, #readerjs-container {
+#editorjs-container,
+.readerjs-container {
   font-size: 0.875rem;
+  line-height: 1.75;
+  @apply leading-relaxed text-muted-foreground;
+
   h1 {
-    @apply text-4xl font-bold;
+    @apply text-4xl font-bold mt-6 mb-4;
   }
+
   h2 {
-    @apply text-2xl;
+    @apply text-2xl font-semibold mt-5 mb-3;
   }
+
+  h3 {
+    @apply text-xl font-semibold mt-4 mb-2;
+  }
+
+  p {
+    @apply mb-4;
+  }
+
+  a {
+    @apply  underline hover:text-chart-4 active:text-chart-4;
+  }
+
+  ul {
+    @apply list-disc list-inside mb-4 ml-4;
+  }
+
+  ol {
+    @apply list-decimal list-inside mb-4 ml-4;
+  }
+
+  blockquote {
+    @apply border-l-4 border-border pl-4 italic my-4;
+  }
+
+  code {
+    @apply  px-1 py-0.5 rounded text-xs font-mono;
+  }
+
+  pre {
+    @apply  p-3 rounded-md overflow-x-auto text-sm;
+  }
+
+  img {
+    @apply max-w-full h-auto my-4 rounded-lg shadow-sm;
+  }
+
   .cdx-block {
-    @apply text-sm;
+    @apply text-sm mb-3;
+  }
+
+  hr {
+    @apply border-t border-border my-6;
   }
 }
