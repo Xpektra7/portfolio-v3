@@ -3,6 +3,7 @@ import { JetBrains_Mono, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -34,7 +35,9 @@ export default function RootLayout({
         className={`${jetbrainsMono.variable} ${geistMono.variable} text-muted-foreground dark px-8 antialiased overflow-x-hidden max-w-[720px] mx-auto my-8 md:mt-16`}
       >
         <header className="w-full flex justify-between items-center mb-8">
-          <h3 className="text-foreground">X7</h3>
+          <Link href="/">
+            <Image src="https://avatars.githubusercontent.com/u/154679547?s=400&u=32c4740cbbf34f1022595fd0261c0fb9c2cf0a3a&v=4" alt="Avatar" className="rounded-full" width={24} height={24}/>
+          </Link>
           <div className="">
             <Button variant="link" size="sm" asChild>
               <Link href="/projects">

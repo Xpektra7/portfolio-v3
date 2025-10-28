@@ -28,7 +28,7 @@ export default function BlogsList() {
           id: doc.id,
           ...doc.data(),
         })) as Blog[];
-        setBlogs(blogData);
+        setBlogs(blogData.reverse());
       } catch {
         setError(true);
       } finally {

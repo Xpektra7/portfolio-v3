@@ -64,6 +64,7 @@ export default function Blog() {
 
       <div className="readerjs-container mt-8">
         <Output data={blog.content}  />
+        <p className='text-xs italics w-full text-right'>{blog.createdAt?.toDate().toLocaleDateString() || "Unknown date"}</p>
       </div>
     </div>
   );
