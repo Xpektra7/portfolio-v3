@@ -19,7 +19,7 @@ interface Project {
   category: string;
 }
 
-export default function Projects({ limit }: { limit?: number }) {
+export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -47,7 +47,7 @@ useEffect(() => {
 
   return (
     <section className="flex flex-col gap-4">
-      {!limit && (
+      
         <>
           <Button variant="link" className="text-xs self-start p-0" asChild>
             <Link href="/">
@@ -57,19 +57,12 @@ useEffect(() => {
           </Button>
           <hr />
         </>
-      )}
+
 
       <div className="flex justify-between items-center">
         <h1 className="text-xl text-foreground font-bold">
-          {limit ? "Featured Projects" : "Projects"}
+          Projects
         </h1>
-        {limit && (
-          <Button variant="link" className="text-xs px-0" asChild>
-            <Link href="/projects" className="p-0">
-              View All
-            </Link>
-          </Button>
-        )}
       </div>
       {!loading ? (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">

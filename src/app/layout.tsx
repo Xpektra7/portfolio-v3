@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import ThemeToggler from "@/components/themeToggler";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import {  LinkedinIcon, TwitterIcon, Github, MailIcon } from "lucide-react";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -28,47 +26,31 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  
+
 
   return (
-      <html lang="en">
+    <html lang="en">
       <body
-        className={`${jetbrainsMono.variable} ${geistMono.variable} text-muted-foreground px-8 antialiased overflow-x-hidden max-w-[720px] mx-auto my-8 md:mt-16`}
+        className={`${jetbrainsMono.variable} ${geistMono.variable} text-muted-foreground dark px-8 antialiased overflow-x-hidden max-w-[720px] mx-auto my-8 md:mt-16`}
       >
-      <header className="w-full flex justify-between items-center mb-8">
-        <h3 className="text-foreground">X7</h3>
-        <div className="flex items-center text-foreground gap-2">
-            <Button variant="secondary" size="icon-sm" asChild aria-label="Link to my Github account">
-              <Link href="https://github.com/Xpektra7" target="_blank" rel="noopener noreferrer">
-                <Github />
+        <header className="w-full flex justify-between items-center mb-8">
+          <h3 className="text-foreground">X7</h3>
+          <div className="">
+            <Button variant="link" size="sm" asChild>
+              <Link href="/projects">
+                Projects
               </Link>
             </Button>
-            <Button variant="secondary" size="icon-sm" asChild aria-label="Link to my Twitter account">
-              <Link href="https://www.x.com/Xpektra7" target="_blank" rel="noopener noreferrer">
-                <TwitterIcon />
-              </Link>
-            </Button>
-            <Button variant="secondary" size="icon-sm" asChild aria-label="Link to my Linkedin account">
-              <Link href="https://www.linkedin.com/in/ogungbayi-imran-9a4ba9291" target="_blank" rel="noopener noreferrer">
-                <LinkedinIcon/>
-              </Link>
-            </Button>
-            <Button variant="secondary" size="icon-sm" asChild aria-label="Send me an Email">
-              <Link href="mailto:xpektra7@gmail.com" target="_blank" rel="noopener noreferrer">
-                <MailIcon />
+            <Button variant="link" size="sm" asChild>
+              <Link href="/blogs">
+                Blogs
               </Link>
             </Button>
           </div>
-
-        <ThemeToggler/>
-      </header>
+        </header>
 
         {children}
 
-        <footer className="flex text-sm justify-between items-center mt-16">
-          X7
-          <p>All rights reserved</p>
-        </footer>
       </body>
     </html>
   );
