@@ -53,7 +53,7 @@ export default function Blog() {
   return (
     <div className="relative border-border">
       <>
-        <Button variant="link" className="text-xs self-start p-0" asChild>
+        <Button variant="link" className="text-xs self-start p-0 mb-4 pb-4 border-b border-border" asChild>
           <Link href="/blogs" className='hover:text-foreground'>
             <ArrowLeft className="size-4" />
             Back to Blogs

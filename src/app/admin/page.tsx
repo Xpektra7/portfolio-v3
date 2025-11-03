@@ -3,6 +3,7 @@ import { db } from "@/lib/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import ErrorComponent from "../../components/error";
+import Loading from "../loading";
 
 interface Project {
   id?: string;
@@ -74,7 +75,7 @@ export default function AdminHome() {
         <p>Blogs : {blogs}</p>
       </div>
     ) : (
-      <p>Loading...</p>
+      <Loading />
     )
 
   );

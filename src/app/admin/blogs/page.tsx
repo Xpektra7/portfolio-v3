@@ -42,21 +42,13 @@ export default function BlogsList() {
 
   return (
     <div className="flex flex-col w-full">
-      <>
-        <Button variant="link" className="text-xs self-start p-0" asChild>
-          <Link href="/">
-            <ArrowLeft className="size-4" />
-            Back to Top
-          </Link>
-        </Button>
-        <hr />
-      </>
+      <Button variant="link" className="text-xs w-full rounded-none justify-start items-left self-start p-0 mb-8 pb-2 border-b border-border text-left" asChild>
+        <Link href="/admin">
+          <ArrowLeft className="size-4" />
+          Back to Top
+        </Link>
+      </Button>
 
-      <div className="flex justify-between items-center mt-8 mb-4">
-        <h1 className="text-xl text-foreground font-bold">
-          Blogs
-        </h1>
-      </div>
 
       {!loading ? (
         <div className="grid gap-4">

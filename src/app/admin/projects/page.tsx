@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { LucideGithub, ImageOff, Link2Icon, PlusIcon, } from "lucide-react";
+import { LucideGithub, ImageOff, Link2Icon, PlusIcon, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -48,7 +48,12 @@ export default function Projects() {
 
   return (
     <section className="flex flex-col gap-4">
-
+      <Button variant="link" className="text-xs w-full rounded-none justify-start items-left self-start p-0 mb-8 pb-2 border-b border-border text-left" asChild>
+        <Link href="/admin">
+          <ArrowLeft className="size-4" />
+          Back to Top
+        </Link>
+      </Button>
       {!loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
           {projects.map((project) => (
