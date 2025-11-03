@@ -3,8 +3,8 @@ import { useState, useEffect, use } from 'react';
 import Output from "editorjs-react-renderer";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/lib/firebase"; // your firebase.ts file
-import Loading from '../loading';
-import Error from '../error';
+import Loading from '../../admin/blogs/loading';
+import Error from '../../admin/blogs/error';
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";

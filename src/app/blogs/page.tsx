@@ -5,8 +5,8 @@ import { db } from "@/lib/firebase"; // your firebase.ts file
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import Error from "./error";
-import Loading from "./loading";
+import Error from "../admin/blogs/error";
+import Loading from "../admin/blogs/loading";
 
 interface Blog {
   id: string;
