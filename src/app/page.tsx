@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import {  ArrowDownToLine, LinkedinIcon, TwitterIcon, Github, MailIcon } from "lucide-react";
+import { ArrowDownToLine, LinkedinIcon, TwitterIcon, Github, MailIcon } from "lucide-react";
 
 
 export default function Home() {
