@@ -12,7 +12,7 @@ interface EditorProps {
   editorBlock: string;
 }
 
-export default function Editor({ data, editorBlock }: EditorProps) {
+export default function Editor({ data, editorBlock="editor-container" }: EditorProps) {
   const editorRef = useRef<EditorJS | null>(null);
   const [saving, setSaving] = useState(false);
   const db = getFirestore(app);
